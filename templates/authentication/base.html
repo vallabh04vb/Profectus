@@ -1,0 +1,550 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Required meta tags -->
+
+    <!-- Font Family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <link href="http://fonts.cdnfonts.com/css/gotham" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Ponzi Hat:wght@400&display=swap"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}" />
+    
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <title>Profectus | Abhyuday</title>
+    <style>
+      body {
+        overflow: hidden !important;
+        
+      }
+      @keyframes zoom-in {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes zoom-out {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(0.8);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      #pic1 {
+        animation-name: zoom-in;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+
+      #pic2,
+      #pic3 {
+        animation-name: zoom-out;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+      #testimonial {
+        position: relative;
+        bottom: -1680px;
+        height: 153vh;
+        top: 1500px;
+      }
+     
+
+      .akash-arikotla,
+      .contact-us1,
+      .tejas-kamat {
+        position: absolute;
+        top: 2460px;
+        left: 585px;
+        display: inline-block;
+        width: 274px;
+        height: 45px;
+        font-size: 40px;
+      }
+      .akash-arikotla,
+      .tejas-kamat {
+        top: 2565px;
+        left: 202px;
+        color: var(--color-lavenderblush);
+        width: 302px;
+        height: 65px;
+      }
+      .akash-arikotla {
+        left: 900px;
+        color: var(--color-lavender);
+        width: 371px;
+      }
+      .div,
+      .div1,
+      .events-and-fellowship,
+      .events-and-fellowship1 {
+        position: absolute;
+        top: 2610px;
+        left: 96px;
+        font-size: var(--font-size-13xl);
+        color: var(--color-lavenderblush);
+        display: inline-block;
+        width: 732px;
+        height: 57px;
+      }
+      .div,
+      .div1,
+      .events-and-fellowship1 {
+        left: 847px;
+        color: var(--color-lavender);
+      }
+      .div,
+      .div1 {
+        top: 2656px;
+        left: 237px;
+        color: var(--color-lavenderblush);
+        width: 281px;
+        height: 38px;
+      }
+      .div1 {
+        top: 2656px;
+        left: 966px;
+        color: var(--color-lavender);
+      }
+      .sr-only {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .flip-card1 {
+        display: block;
+        width: 38vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        left: 252px;
+      }
+      .flip-card2 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 96px;
+        left: 544px;
+      }
+      .flip-card3 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 96px;
+        right: 383px;
+      }
+      .flip-card4 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 96px;
+        right: 98px;
+      }
+      .flip-card5 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 397px;
+
+        right: 957px;
+      }
+      .flip-card6 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 399px;
+        left: 544px;
+      }
+      .flip-card7 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 399px;
+        left: 829px;
+      }
+      .flip-card8 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 398px;
+        right: 100px;
+      }
+      .flip-card9 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 698px;
+        right: 958px;
+      }
+      .flip-card10 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 698px;
+        right: 670px;
+      }
+      .flip-card11 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 698px;
+        right: 383px;
+      }
+      .flip-card12 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 698px;
+        right: 100px;
+      }
+      .flip-card13 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 997px;
+        right: 958px;
+      }
+      .flip-card14 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 996px;
+        right: 672px;
+      }
+      .flip-card15 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 996px;
+        right: 384px;
+      }
+      .flip-card16 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 996px;
+        right: 100px;
+      }
+      .flip-card17 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 1296px;
+        right: 960px;
+      }
+      .flip-card18 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 1296px;
+        right: 672px;
+      }
+      .flip-card19 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 1296px;
+        right: 384px;
+      }
+      .flip-card20 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 1296px;
+        right: 100px;
+      }
+      .flip-card21 {
+        display: block;
+        width: 37vh;
+        height: 39vh;
+        background-color: white;
+        margin: 2vh;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        align-items: center;
+        border-radius: 1vh;
+        position: absolute;
+        top: 1596px;
+        right: 960px;
+      }
+      /*@media screen and (max-width:600px){
+  #profect{
+    color:red;
+  }
+}
+@media screen and (min-width:600px){
+  #profect{
+    color:white;
+  }
+}*/
+      @media screen and (max-width: 425px) 
+      
+       {
+        .profectus {
+          color: red;
+        }
+        .depositphotos-201446926-stock-icon {
+          background: cover;
+        }
+        .desktop-3 .depositphotos-201446926-stock-icon {
+          right: -50px;
+        }
+        .akash-arikotla,
+        .contact-us1,
+        .tejas-kamat {
+          position: absolute;
+          top: 2460px;
+          left: 585px;
+          display: inline-block;
+          width: 100%;
+          height: 45px;
+          font-size: 40px;
+        }
+        .form{
+          position:relative;
+          right:10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    {% block content %} {% endblock content %}
+  </body>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+    integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+    integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+    crossorigin="anonymous"
+  ></script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</html>

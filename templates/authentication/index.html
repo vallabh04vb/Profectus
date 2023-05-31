@@ -1,0 +1,2476 @@
+{% extends 'authentication/base.html' %} {% block content %} {% load static %}
+
+{% if messages %}
+{% for message in messages%}
+<div class="alert alert-{{ messages.tags }} alert-dismissible fade show" role="alert" style="margin: 0">
+  <strong>{{ message }}</strong>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %} 
+{%endif%}
+{% if user.is_authenticated%} {% comment %}
+<h3>hello {{name}}</h3>
+<h4>You're successfully logged in</h4>
+{% endcomment %}
+
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"/>
+  
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="{% static 'css/index.css' %}" />
+<link rel="stylesheet" href=./static/css/style.css>
+<link rel="stylesheet" href="./static/css/new.css">
+<link rel="stylesheet" href="./static/css/global.css" />
+<!-- <link rel="stylesheet" href="./static/css/index.css" /> -->
+<link rel="stylesheet" href="./static/css/signup.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Add these lines to include Bootstrap JavaScript and CSS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<div class="prof-container" style="width:100%;">
+  <img
+  class="depositphotos-201446926-stock-icon"
+  alt=""
+  src="./static/images/public/depositphotos-201446926stockphotogradientbackgroundblacknightdark-2@2x.png"
+/> 
+
+  <div class="sidenav" id="myPref">
+    <div class="dash-logo">
+      <a href="https://www.abhyudayiitb.org/"
+        ><img src="./static/images/public/logo-hoodie-1@2x.png" alt=""></a>
+    </div>
+    <!-- <div class="nav-tab active">
+      <i class="fa fa-home" style="margin-right: 3vh"></i>Home
+    </div> -->
+  
+    <!-- <div class="nav-tab">
+      <a href="/resume/upload" style="text-decoration: none; color: white ;"
+        ><i class="fa fa-file" style="margin-right: 3vh"></i>Resume</a
+
+      >
+    </div> -->
+    <div class="prefernce" id="prefernce">
+      <h3 style="text-align: center; color: white;">Preferences</h3>
+      <form style="padding: 0 1vh" method="post" , action="{% url 'apply'%}">
+        {% csrf_token %}
+        <div class="input-group" style="flex-direction: column">
+          <label style="text-align: center; color: white;" >Prefernce 1</label>
+          <input
+            type="text"
+            id="pref1"
+            name="pref1"
+            style="
+              border: 1px solid purple;
+              background: white;
+              color: purple;
+              border-radius: 0.5vh;
+            "
+          />
+          <br />
+          <label style="text-align: center; color: white;">Prefrence 2</label>
+          <input
+            type="text"
+            id="pref2"
+            name="pref2"
+            class="pref-side"
+            style="
+              border: 1px solid purple;
+              background: white;
+              color: purple;
+              border-radius: 0.5vh;
+            "
+          />
+
+          <br />
+          <label style="text-align: center; color: white;">Prefrence 3</label>
+          <input
+            type="text"
+            id="pref3"
+            name="pref3"
+            class="pref-side"
+            style="
+              border: 1px solid purple;
+              background: white;
+              color: purple;
+              border-radius: 0.5vh;
+            "
+          />
+          <br />
+          
+         
+          <label style="text-align: center; color: white; ">Prefrence 4</label>
+          <input
+            type="text"
+            id="pref4"
+            name="pref4"
+            class="pref-side"
+            style="
+              border: 1px solid purple;
+              background: white;
+              color: purple;
+              border-radius: 0.5vh;
+            "
+          />
+          
+          <br />
+          <label style="text-align: center; color: white; ">Prefrence 5</label>
+          <input
+            type="text"
+            id="pref5"
+            name="pref5"
+            class="pref-side"
+            style="
+              border: 1px solid purple;
+              background: white;
+              color: purple;
+              border-radius: 0.5vh;
+            "
+          />
+          <br />
+          <label style="text-align: center; color: white;">Upload your Resume Link here</label>
+          <input
+            type="text"
+            id="resumelink"
+            name="resumelink"
+            class="pref-side"
+            style="
+              border: 1px solid purple;
+              background: white;
+              color: purple;
+              border-radius: 0.5vh;
+            "
+          />
+          <br/>
+
+          <div style="display: flex; justify-content: center">
+            <button type="submit" class="apply-btn" style="margin-top: 4vh">
+              Apply
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <br/>
+
+    <!-- <div class="logout">
+      <button class="logout-btn">
+        <a href="/logout">
+          <i
+            class="fa fa-sign-out"
+            aria-hidden="true"
+            style="margin-right: 1vh"
+          ></i
+          >Logout</a
+        >
+      </button>
+    </div> -->
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="dashMobile()">
+    <i class="fa fa-bars"></i>
+  </a>
+
+  <div class="iaf-content">
+    <div class="nav" style="  overflow-y: hidden;">
+      <div class="name tab" style="font-family: Ponzi Hat; ">Profectus</div>
+      <div class="nav-tab active">
+        <i class="fa fa-home" style="margin-right: 3vh"></i>Home
+      </div>
+      <div class="logout">
+        <button class="logout-btn" >
+          <a href="/logout">
+            <i
+              class="fa fa-sign-out"
+              aria-hidden="true"
+              style="margin-right: 1vh"
+            ></i
+            >Logout</a
+          >
+        </button>
+      </div>
+    </div>
+
+
+      <div class="iaf-lower-content">
+        <div class="card-container" style="display: flex; flex-direction: row;">
+          <div class="flip-card1">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card1"
+            >
+              Details
+            </button>
+            <select
+              name="location_one"
+              id="location_one"
+              onchange="copyTextValue(id ,'c1')"
+              class="pref-select same"
+            >
+            <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+            <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+            <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+            <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+            <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+            <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+            </select>
+          </div>
+  
+          <div class="modal" id="card1">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer --> 
+                 <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div> 
+              </div>
+            </div>
+          </div>
+  
+          <div class="flip-card2">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card2"
+            >
+              Details
+            </button>
+            <select
+              name="location_two"
+              id="location_two"
+              onchange="copyTextValue(id ,'c2')"
+              class="pref-select same"
+            >
+             
+            <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+            <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+            <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+            <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+            <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+            <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+            </select>
+          </div>
+  
+          <div class="modal" id="card2">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                  
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+  
+          <div class="flip-card3">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">vallabh</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card3"
+            >
+              Details
+            </button>
+            <select
+              name="location_three"
+              id="location_three"
+              onchange="copyTextValue(id ,'vallabh')"
+              class="pref-select same"
+            >
+             
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card3">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div> -->
+              </div>
+            </div>
+          </div>
+  
+          <!-- row 2 -->
+  
+          <div class="flip-card4">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card4"
+            >
+              Details
+            </button>
+            <select
+              name="location_four"
+              id="location_four"
+              onchange="copyTextValue(id ,'Card Title')"
+              class="pref-select same"
+            >
+              <option value="">Prefernce</option>
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card4">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <br>
+          <h3>section</h3>
+          <br>
+          <div class="flip-card5">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card5"
+            >
+              Details
+            </button>
+            <select
+              name="location_five"
+              id="location_five"
+              onchange="copyTextValue(id ,'c5')"
+              class="pref-select same"
+            >
+            <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+            <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+            <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+            <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+            <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+            <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card5">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+  
+          <div class="flip-card6">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card6"
+            >
+              Details
+            </button>
+            <select
+              name="location_six"
+              id="location_six"
+              onchange="copyTextValue(id ,'c6')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card6">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card7">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card7"
+            >
+              Details
+            </button>
+            <select
+              name="location_seven"
+              id="location_seven"
+              onchange="copyTextValue(id ,'c7')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card7">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card8">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card8"
+            >
+              Details
+            </button>
+            <select
+              name="location_eight"
+              id="location_eight"
+              onchange="copyTextValue(id ,'c8')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card8">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card9">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card9"
+            >
+              Details
+            </button>
+            <select
+              name="location_nine"
+              id="location_nine"
+              onchange="copyTextValue(id ,'c9')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card9">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card10">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card10"
+            >
+              Details
+            </button>
+            <select
+              name="location_ten"
+              id="location_ten"
+              onchange="copyTextValue(id ,'c10')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card10">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card11">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card11"
+            >
+              Details
+            </button>
+            <select
+              name="location_eleven"
+              id="location_eleven"
+              onchange="copyTextValue(id ,'c11')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card11">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card12">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card12"
+            >
+              Details
+            </button>
+            <select
+              name="location_twelve"
+              id="location_twelve"
+              onchange="copyTextValue(id ,'c12')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card12">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card13">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card13"
+            >
+              Details
+            </button>
+            <select
+              name="location_thirteen"
+              id="location_thirteen"
+              onchange="copyTextValue(id ,'c13')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card13">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div class="flip-card14">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card14"
+            >
+              Details
+            </button>
+            <select
+              name="location_fourteen"
+              id="location_fourteen"
+              onchange="copyTextValue(id ,'c14')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card14">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div><div class="flip-card15">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card15"
+            >
+              Details
+            </button>
+            <select
+              name="location_fifteen"
+              id="location_fifteen"
+              onchange="copyTextValue(id ,'c15')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card15">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div><div class="flip-card16">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card16"
+            >
+              Details
+            </button>
+            <select
+              name="location_sixteen"
+              id="location_sixteen"
+              onchange="copyTextValue(id ,'c16')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="card16">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div><div class="flip-card17">
+            <img
+              src="{% static 'images/dashboard/Peta.png' %}"
+              alt="Avatar"
+              style="width:20vh; height:20vh;"
+            />
+            <div class="title-inner">Card Title</div>
+            <button
+              type="button"
+              class="bt same"
+              data-bs-toggle="modal"
+              data-bs-target="#card17"
+            >
+              Details
+            </button>
+            <select
+              name="location_seventeen"
+              id="location_seventeen"
+              onchange="copyTextValue(id ,'c17')"
+              class="pref-select same"
+            >
+              <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+              <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+              <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+              <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+              <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+              <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+            </select>
+          </div>
+  
+          <div class="modal" id="car17">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Company Name</h4>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                  ></button>
+                </div>
+  
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h2>Job Discription:</h2>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                    hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                    ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                    earum delectus odio doloribus fuga, ullam saepe, sapiente
+                    officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                    architecto est ad officiis reiciendis, totam molestiae ducimus
+                    dolorum dicta repellat maiores eius impedit saepe animi velit
+                    dolore inventore exercitationem sapiente eveniet nobis
+                    similique ratione necessitatibus. Dolores quasi excepturi
+                    laboriosam earum illum nam eligendi alias enim pariatur
+                    perferendis, officia iusto debitis repellat fuga sint, odio at
+                    atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                    deserunt incidunt.
+                  </p>
+                </div>
+  
+                <!-- Modal footer -->
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div><div class="flip-card18">
+          <img
+            src="{% static 'images/dashboard/Peta.png' %}"
+            alt="Avatar"
+            style="width:20vh; height:20vh;"
+          />
+          <div class="title-inner">Card Title</div>
+          <button
+            type="button"
+            class="bt same"
+            data-bs-toggle="modal"
+            data-bs-target="#card18"
+          >
+            Details
+          </button>
+          <select
+            name="location_eighteen"
+            id="location_eighteen"
+            onchange="copyTextValue(id ,'c18')"
+            class="pref-select same"
+          >
+            <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+            <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+            <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+            <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+            <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+            <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+          </select>
+        </div>
+
+        <div class="modal" id="car18">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Company Name</h4>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                ></button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <h2>Job Discription:</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                  hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                  ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                  earum delectus odio doloribus fuga, ullam saepe, sapiente
+                  officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                  architecto est ad officiis reiciendis, totam molestiae ducimus
+                  dolorum dicta repellat maiores eius impedit saepe animi velit
+                  dolore inventore exercitationem sapiente eveniet nobis
+                  similique ratione necessitatibus. Dolores quasi excepturi
+                  laboriosam earum illum nam eligendi alias enim pariatur
+                  perferendis, officia iusto debitis repellat fuga sint, odio at
+                  atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                  deserunt incidunt.
+                </p>
+              </div>
+
+              <!-- Modal footer -->
+              <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div><div class="flip-card19">
+        <img
+          src="{% static 'images/dashboard/Peta.png' %}"
+          alt="Avatar"
+          style="width:20vh; height:20vh;"
+        />
+        <div class="title-inner">Card Title</div>
+        <button
+          type="button"
+          class="bt same"
+          data-bs-toggle="modal"
+          data-bs-target="#card19"
+        >
+          Details
+        </button>
+        <select
+          name="location_nineteen"
+          id="location_nineteen"
+          onchange="copyTextValue(id ,'c19')"
+          class="pref-select same"
+        >
+          <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+          <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+          <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+          <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+          <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+          <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+        </select>
+      </div>
+
+      <div class="modal" id="card19">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Company Name</h4>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <h2>Job Discription:</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+                hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+                ipsum in quos eveniet assumenda? Illum quasi enim architecto
+                earum delectus odio doloribus fuga, ullam saepe, sapiente
+                officiis hic quo, fugiat voluptatem. At tempora laboriosam
+                architecto est ad officiis reiciendis, totam molestiae ducimus
+                dolorum dicta repellat maiores eius impedit saepe animi velit
+                dolore inventore exercitationem sapiente eveniet nobis
+                similique ratione necessitatibus. Dolores quasi excepturi
+                laboriosam earum illum nam eligendi alias enim pariatur
+                perferendis, officia iusto debitis repellat fuga sint, odio at
+                atque iure, nisi molestiae accusantium animi. Ab in veritatis
+                deserunt incidunt.
+              </p>
+            </div>
+
+            <!-- Modal footer -->
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div><div class="flip-card20">
+      <img
+        src="{% static 'images/dashboard/Peta.png' %}"
+        alt="Avatar"
+        style="width:20vh; height:20vh;"
+      />
+      <div class="title-inner">Card Title</div>
+      <button
+        type="button"
+        class="bt same"
+        data-bs-toggle="modal"
+        data-bs-target="#card20"
+      >
+        Details
+      </button>
+      <select
+        name="location_twenty"
+        id="location_twenty"
+        onchange="copyTextValue(id ,'c20')"
+        class="pref-select same"
+      >
+        <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+        <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+        <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+        <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+        <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+        <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+      </select>
+    </div>
+
+    <div class="modal" id="card20">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Company Name</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <h2>Job Discription:</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+              hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+              ipsum in quos eveniet assumenda? Illum quasi enim architecto
+              earum delectus odio doloribus fuga, ullam saepe, sapiente
+              officiis hic quo, fugiat voluptatem. At tempora laboriosam
+              architecto est ad officiis reiciendis, totam molestiae ducimus
+              dolorum dicta repellat maiores eius impedit saepe animi velit
+              dolore inventore exercitationem sapiente eveniet nobis
+              similique ratione necessitatibus. Dolores quasi excepturi
+              laboriosam earum illum nam eligendi alias enim pariatur
+              perferendis, officia iusto debitis repellat fuga sint, odio at
+              atque iure, nisi molestiae accusantium animi. Ab in veritatis
+              deserunt incidunt.
+            </p>
+          </div>
+
+          <!-- Modal footer -->
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div><div class="flip-card21">
+    <img
+      src="{% static 'images/dashboard/Peta.png' %}"
+      alt="Avatar"
+      style="width:20vh; height:20vh;"
+    />
+    <div class="title-inner">Card Title</div>
+    <button
+      type="button"
+      class="bt same"
+      data-bs-toggle="modal"
+      data-bs-target="#card21"
+    >
+      Details
+    </button>
+    <select
+      name="location_twentyone"
+      id="location_twentyone"
+      onchange="copyTextValue(id ,'c21')"
+      class="pref-select same"
+    >
+      <option value="" selected disabled style="background-color: rgb(78, 3, 85);;">Prefernce</option>
+      <option value ="1" style="background-color: rgb(78, 3, 85);">1</option>
+      <option value="2" style="background-color: rgb(78, 3, 85);">2</option>
+      <option value="3" style="background-color: rgb(78, 3, 85);">3</option>
+      <option value="4" style="background-color: rgb(78, 3, 85);">4</option>
+      <option value="5" style="background-color: rgb(78, 3, 85);">5</option>
+
+    </select>
+  </div>
+
+  <div class="modal" id="car21">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Company Name</h4>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <h2>Job Discription:</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi
+            hic, ut recusandae dolorum quaerat eligendi quidem minus harum
+            ipsum in quos eveniet assumenda? Illum quasi enim architecto
+            earum delectus odio doloribus fuga, ullam saepe, sapiente
+            officiis hic quo, fugiat voluptatem. At tempora laboriosam
+            architecto est ad officiis reiciendis, totam molestiae ducimus
+            dolorum dicta repellat maiores eius impedit saepe animi velit
+            dolore inventore exercitationem sapiente eveniet nobis
+            similique ratione necessitatibus. Dolores quasi excepturi
+            laboriosam earum illum nam eligendi alias enim pariatur
+            perferendis, officia iusto debitis repellat fuga sint, odio at
+            atque iure, nisi molestiae accusantium animi. Ab in veritatis
+            deserunt incidunt.
+          </p>
+        </div>
+
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+        </div>
+       
+      </div>
+    </div>
+      
+    </div>
+  </div>
+</div>
+
+<script>
+// $('select[name*="location"]').change(function () {
+//   var selectedOptions = $(this).find("option:selected");
+//   $("select option").prop("disabled", false);
+  
+//   selectedOptions.each(function () {
+//     var value = $(this).val();
+    
+//     if (value !== "") {
+//       var id = $(this).parent('select[name*="location"]').attr("id");
+//       var options = $('select[name*="location"]').not('#' + id).find("option[value='" + value + "']");
+//       options.prop("disabled", true);
+//     }
+//   });
+// });
+$('select[name*="location"]').change(function () {
+    var selectedOptions = $("select option:selected");
+    $("select option").removeAttr("disabled");
+    selectedOptions.each(function () {
+      var value = this.value;
+      if (value !== "") {
+        var id = $(this).parent('select[name*="location"]').attr("id");
+        var options = $("select:not(#" + id + ") option[value=" + value + "]");
+        options.attr("disabled", "true");
+      }
+    });
+  });
+
+  function copyTextValue(x, y) {
+    var text1 = y;
+    var text2 = document.getElementById(x);
+    var text3 = text2.options[text2.selectedIndex].text;
+    if (text3 == "1") {
+      document.getElementById("pref1").value = text1;
+    } 
+    else {
+      if (text3 == "2") {
+        document.getElementById("pref2").value = text1;
+      } 
+      else if (text3=="3"){
+        document.getElementById("pref3").value = text1;
+
+      }
+      else if (text3=="4"){
+        document.getElementById("pref4").value = text1;
+        
+      }
+      
+      else {
+        document.getElementById("pref5").value = text1;
+      }
+    }
+  }
+
+  function dashMobile() {
+    var x = document.getElementById("myPref");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+
+  
+</script>
+
+<script src="{% static 'js/script.js' %}"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+  crossorigin="anonymous"
+></script>
+
+{%else%}
+
+  
+  
+    <a href="javascript:void(0);" class="icon" onclick="hamMobile()">
+      <i class="fa fa-bars"></i>
+    </a>
+         
+
+  
+<!-- new added start  -->
+<!-- <div class="main-container"> -->
+  <!-- navbar start -->
+  <!-- <nav>
+    <div class="logo">
+      <img src="./static/images/new/logo.png" alt="logo" />
+    </div>
+
+    <ul>
+      <li>
+        <a href="#home" class="active">Home</a>
+      </li>
+      <li>
+        <a href="#about">About</a>
+      </li>
+      <li>
+        <a href="#testimonial" >Testimonial</a>
+      </li>
+
+   
+       <li>
+        <a href="#contact" class="btn light">Contact</a>
+      </li>
+    </ul>
+</nav> -->
+
+      <!-- navbar ends -->
+      <!-- hero section start -->
+       <!-- <div class="hero-container"> 
+        <div class="hero-image">
+          <img src="./static/images/new/hero-image.svg" alt="hero-image" />
+          <div class="hero-ground"></div>
+        </div>
+        <div class="hero-text">
+          <h1>
+            PROFECTUS </h1>
+             <br />
+           <h2> FELLOWSHIP PROGRAM OF ABHYUDAY</h2>
+         
+          <p class="subheading">
+           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat qui quam, iste impedit
+          </p>
+          <a  href="/signup" class="btn dark">Register</a>
+        </div>
+      </div>  -->
+      <!-- hero section end -->
+           <!-- social media icons start -->
+           <!-- <div class="social-icons">
+            <a href="#">
+              <img src="./static/images/new/social-instagram.svg" alt="instagram" />
+            </a>
+            <a href="#">
+              <img src="./static/images/new/social-facebook.svg" alt="facebook" />
+            </a>
+            <a href="#">
+              <img src="./static/images/new/social-tweeter.svg" alt="tweeter" />
+            </a>
+          </div> -->
+          <!-- social media icons end -->
+
+<!-- new added ends  -->
+
+  <!-- <div class="land-container-2" id="about">
+    <div class="about-profectus">
+      <div class="heading">About Profectus</div>
+      <div class="discription">
+        As they say, <br />
+        “The most practical, beautiful, workable philosophy in the world won't
+        work- if you won't”, Abhyuday IIT Bombay provides the young generation
+        an opportunity to get involved in social work through fellowship
+        program, PROFECTUS. Register for summer internship opprtunities in the
+        social sector.The interview process will begin after end semester and
+        all final selections will be done before 28th June.
+      </div>
+    </div>
+    <div class="about-fellowship">
+      <div id="fellow-heading">About Fellowship Program</div>
+      <div id="fellow-discription">
+        The fellowship program of Abhyuday which gives youth the opportunity to
+        engage themselves in social work by working with NGOs, social startups
+        and alumni of IIT Bombay working in this field. Fellowships focuses on
+        providing an insight into various sectors in the field of social work
+        whilst providing a valuable output for the society. The work students do
+        in their fellowships ranges hugely. It includes communication, impact
+        analysis, fundraising, planning and organizing support groups, work with
+        coalition groups, help with grant writing and other profiles which are
+        important in socially impactful organis ation. Fellows work under the
+        direct supervision of professional social workers or social leaders who
+        have extensive experience in the field.
+      </div>
+    </div>
+  </div> -->
+
+ <!-- <div class="testimonials id="testimonial" >
+
+    <h1
+      style="text-align: center; margin-top: 4vh; margin-bottom: 2vh"
+      id="Testi"
+    >
+      Testimonials
+    </h1>
+    <div
+      id="carouselExample"
+      class="carousel carousel-dark slide"
+      data-bs-ride="carousel"
+    >
+      <ol class="carousel-indicators" style="bottom: -7vh">
+        <li
+          data-bs-target="#carouselExample"
+          data-bs-slide-to="0"
+          class="active"
+        ></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="1"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="2"></li>
+        <li data-bs-target="#carouselExample" data-bs-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row custom">
+            <div class="custom-col">
+              <div class="test"></div>
+              <div class="test"></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="custom-col">
+              <div class="test"></div>
+              <div class="test"></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="custom-col">
+              <div class="test"></div>
+              <div class="test"></div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="custom-col">
+              <div class="test"></div>
+              <div class="test"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExample"
+        role="button"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExample"
+        role="button"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </div>  -->
+
+  <!-- <div class="footer" id="contact">
+    <div id="contact-land">Contact Us</div>
+    <div class="managers">
+      <div class="manage-inner">
+        <div>Achira Jain</div>
+        <div class="department">Competitions Manager</div>
+      </div>
+      <div class="manage-inner">
+        <div>Satyan Reddy</div>
+        <div class="department">Events and Fellowships Manager</div>
+      </div>
+    </div>
+  </div> -->
+</div>
+  <!-- main container ends -->
+    <!-- background images -->
+    <!-- <div class="hero-bg-right" >
+      <img src="./static/images/new/right-box.svg" alt="banner-right" />
+    </div>
+    <div class="hero-bg-left" >
+      <img src="./static/images/new/left-box3.svg" alt="bannerleft" />
+      <img src="./static/images/new/left-box2.svg" alt="bannerleft" />
+      <img src="./static/images/new/left-box1.svg" alt="bannerleft" />
+    </div> -->
+
+    <!-- final design starts  -->
+    <div class="desktop-3" style="width: 100%;">
+      
+        <img
+          class="depositphotos-201446926-stock-icon"
+          alt=""
+          src="./static/images/public/depositphotos-201446926stockphotogradientbackgroundblacknightdark-2@2x.png"
+        />
+       
+       
+        {% comment %} <img class="desktop-3-child" alt="" src="./static/images/new/Group 11.png" /> {% endcomment %}
+  
+        
+        <div class="profectus"data-aos="zoom-in-down" id="profect"  data-aos-duration="1000">PROFECTUS</div>
+        <div class="fellowship-program-of"data-aos="zoom-in-down"  data-aos-duration="1000">Fellowship Program Of Abhyuday</div> 
+         <nav class="header">
+          <div class="frame">
+            <img
+              class="logo-hoodie-1"
+              alt=""
+              src="./static/images/public/logo-hoodie-1@2x.png"
+            />
+  
+            <a href="#home" class="home">HOME</a>
+
+          </div>
+          <div class="frame1">
+            <a href=#contact class="contact-us">CONTACT US</a>
+
+            <div class="frame2"></div>
+            <div class="frame2">
+              <a href="#about-prof" class="about">ABOUT</a>
+
+              <a href="#testimonial" class="testimonials">TESTIMONIALS</a>
+
+            </div>
+          </div>
+        </nav>
+        <div class="desktop-3-child"></div>
+        <div class="rectangle-parent">
+          <div class="frame-child"></div>
+          <!-- <a  href="/signup" class="btn dark register-now">Register</a> -->
+          <!-- <div class="register-now">REGISTER NOW</div> -->
+          <a href="/signup" class="register-now" data-aos="zoom-in"
+          data-aos-duration="1000" >REGISTER NOW</a>
+        </div>
+        <div class="bgimages">
+        <div class="desktop-3-item"></div>
+        
+        <img class="vector-icon" alt="" src="./static/images/public/vector.svg" />
+  
+        <div class="vector-group" data-aos="zoom-out-right" data-aos-duration="1000" data-aos-offset="120">
+          <img
+            class="vector-icon1"
+            alt=""
+            id="wheel1"
+            src="./static/images/public/vector1.svg"
+          />
+  
+          <img class="vector-icon2" alt="" src="./static/images/public/vector2.svg" />
+  
+          <img class="vector-icon3" alt="" src="./static/images/public/vector3.svg" />
+  
+          <img class="vector-icon4" alt="" src="./static/images/public/vector4.svg" />
+  
+          <img
+            class="vector-icon5"
+            alt=""
+            id="wheel3"
+            src="./static/images/public/vector5.svg"
+          />
+  
+          <img class="vector-icon6" alt="" src="./static/images/public/vector6.svg" />
+  
+          <img class="vector-icon7" alt="" src="./static/images/public/vector7.svg" />
+  
+          <img class="vector-icon8" alt="" src="./static/images/public/vector8.svg" />
+  
+          <img
+            class="vector-icon9"
+            alt=""
+            id="wheel2"
+            src="./static/images/public/vector9.svg"
+          />
+        </div>
+        <img class="group-icon" alt="" src="./static/images/public/group.svg" />
+  
+        <img class="group-icon1" alt="" src="./static/images/public/group1.svg" />
+  
+        <img class="desktop-3-inner" alt="" src="./static/images/public/group-8.svg" />
+  
+        <img class="vector-icon10" alt="" src="./static/images/public/vector11.svg" />
+  
+        <img class="desktop-3-child1" alt="" src="./static/images/public/group-5.svg" />
+  
+        <img class="desktop-3-child2" alt="" src="./static/images/public/group-4.svg" />
+  
+        <img class="desktop-3-child3" alt="" src="./static/images/public/group-3.svg" />
+  
+        <img class="desktop-3-child4" alt="" src="./static/images/public/group-2.svg" />
+  
+        <img class="desktop-3-child5" alt="" src="./static/images/public/group-1.svg" />
+      </div>
+        <div class="id-3-parent">
+          <img class="id-3-icon"  alt="" id="pic3" src="./static/images/public/id-3.svg" />
+  
+          <img class="id-2-icon"  alt="" id="pic2" src="./static/images/public/id-2.svg" />
+  
+          <img class="vector-icon11" alt="" src="./static/images/public/vector10.svg" />
+  
+          <img class="id-3-icon1"  alt="" id="pic1" src="./static/images/public/id-31.svg" />
+        </div>
+    <div class="about-section" >
+        <div class="rectangle-div"></div> 
+        <div class="desktop-3-child6"></div> 
+        <div class="about-profectus"  id="about-prof" data-aos="slide-right"data-aos-duration="1000"data-aos-offset="300">ABOUT PROFECTUS</div>
+        
+       
+        <div class="as-they-say"data-aos="slide-right" data-aos-duration="1000" data-aos-offset="300">
+          As they say, “The most practical, beautiful, workable philosophy in the
+          world won’t work- if you won’t”, Abhyuday IIT Bombay provides the young
+          generation an opportunity to get involved in social work through
+          fellowship program, PROFECTUS. Register for summer internship
+          opprtunities in the social sector.The interview process will begin after
+          end semester and all final selections will be done before 28th June.
+        </div> 
+         <div class="fellowship">
+           <div class="about-fellowship-program" data-aos="fade-up"
+           data-aos-duration="1000">ABOUT FELLOWSHIP PROGRAM</div>
+            <div class="the-fellowship-program-container">
+        
+                <p class="p"></p>
+              <p class="p" data-aos="fade-up"
+              data-aos-duration="1000">
+                The fellowship program of Abhyuday which gives youth the opportunity
+                to engage themselves in social work by working with NGOs, social
+                startups and alumni of IIT Bombay working in this field. Fellowships
+                focuses on providing an insight into various sectors in the field of
+                social work whilst providing a valuable output for the society. The
+                work students do in their fellowships ranges hugely. It includes
+                communication, impact analysis, fundraising, planning and organizing
+                support groups, work with coalition groups, help with grant writing
+                and other profiles which are important in socially impactful
+                organisation. Fellows work under the direct supervision of
+                professional social workers or social leaders who have extensive
+                experience in the field.
+              </p>
+            </div>
+          </div> 
+      
+        <img
+      class="resume-icon"
+      data-aos="slide-left" data-aos-duration="1000" data-aos-offset="300"
+      data-aos-duration="1000"
+      alt=""
+      id="resumepic"
+      
+      src="./static/images/public/resume@2x.png" 
+      >/>
+    </div>
+    <!-- <div class="testimonial" data-aos="fade-up"
+    data-aos-duration="1000" id="testimonial" >
+
+     
+
+        <h1
+          style="text-align: center; margin-top: 4vh; margin-bottom: 2vh"
+          id="Testi"
+        >
+          Testimonials
+        </h1>
+        <div id="carouselExample" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExample" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExample" data-slide-to="1"></li>
+            <li data-target="#carouselExample" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" style=" position: relative;
+             position: relative;
+    font-size: 24px;
+    overflow: hidden;
+    width: 1198px;
+    left: -145px;
+    top: -28px;   overflow-x: hidden;">
+            <div class="carousel-item active">
+              <div class="row">
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  Overall experience was good. The team was helpful, I would like to thank team Abhyuday for giving me such opportunity. Rahul, founder of the NGO, helped me at every step. He was just the mentor we needed.
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Kumar Saurabh </cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>Chemical Engineering (UG - Third Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  I had a very good experience while doing internship, learnt a lot of things, done lots of fun activities. Thanks to Abhyuday. 
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Yash Kumar </cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>Civil Engineering (UG - Third Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  I had a great experience with Profectus'21. The registration and complete selection process went smoothly.  The company coordinator was also friendly and easily approachable. Members of Abhyuday, who were the organizers of Profectus, took updates on a regular basis to ensure the process is going well
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Aarya Chaudhari</cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>MEMS (UG - Second Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  It was a great experience to help out the NGO who focused on teaching orphaned children and provided them elementary education with the help of games and activities.
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Nitya Garg</cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>SJMSOM (Second Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  Working as a fundraiser and handling logistics work, my experience at Pranyas Development foundation has been enriching. The tasks that we were assigned on a daily basis were unique and interesting, which eventually helped me discover my inner potential in the domain of selfless work. This internship helped me learn about various skills like time management, effective communication, critical thinking, problem-solving, etc.
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Shivangi Sharma </cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>Chemical Engineering (UG - Second Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  Overall experience was good. We created QR codes for women's products, then we created an online platform using Google sites for them and also added videos to showcase their stories. Overall we made efforts to develop their business. It was a good experience.
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Yashwant Nigdikar</cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>CTARA (Second Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  "It was my first 1 month break at IITB and Profectus helped me bag an intern. It was very a smooth experience — getting interviewed and joining the internship. 
+                                    The intern experience was also unexpectedly nice. I met new people from our own Institute, and learnt a thing or two, working with them."
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Aryan Bhardwaj</cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>Mechanical engineering (UG - Second Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col">
+                  <section class="t-bq-section" id="paul">
+                    <div class="t-bq-wrapper t-bq-wrapper-boxed">
+                        <div class="t-bq-quote t-bq-quote-paul">
+                            <div class="t-bq-quote-paul-userpic"></div>
+                            <div class="t-bq-quote-paul-qmark">
+                                &#10077;
+                            </div>
+                            <div class="t-bq-quote-paul-pattern">
+                            </div>
+                            <div class="t-bq-quote-paul-base">
+                                <blockquote class="t-bq-quote-paul-text" cite="Strugatsky Brothers">
+                                  So grateful to have got such an opportunity. I had a wonderful experience taking workshops with children in which we tried to let them get comfortable with us and then slowly instilled in them a sense of compassion and care for animals. We took creative ways like puppet shows, quizzes etc. It is magical how while doing all this work, I got more motivated to think about my daily choices and check them if they were animal compassionate (like choosing vegan clothing, makeup accessories,etc.). All of us must give it a thought.
+                                </blockquote>
+                                <div class="t-bq-quote-paul-meta">
+                                    <div class="t-bq-quote-paul-meta-info">
+                                        <div class="t-bq-quote-paul-author"><cite>Anika matanhelia </cite></div>
+                                        <div class="t-bq-quote-paul-source"><span>Energy science (Second Year)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </section>
+                </div>
+                
+              </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-bs-slide="prev" >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-bs-slide="next" >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+      </div>
+        
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">></span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </a>
+      </div> -->
+        
+      </div> 
+
+      <div class="desktop-3-child9"></div>
+      <div class="desktop-3-child10"></div>
+  
+      <div class="contact-us1" id="contact"data-aos="zoom-in-down"  data-aos-duration="1000">CONTACT US</div>
+      <div class="tejas-kamat" data-aos="fade-right"data-aos-duration="1000">TEJAS KAMAT</div>
+      <div class="akash-arikotla" data-aos="fade-left"data-aos-duration="1000">AKASH ARIKOTLA</div>
+      <div class="events-and-fellowship" data-aos="fade-right"data-aos-duration="1000">Events and Fellowship Manager</div>
+      <div class="events-and-fellowship1"data-aos="fade-left"data-aos-duration="1000">Events and Fellowship Manager</div>
+      <div class="div" data-aos="fade-right"data-aos-duration="1000">9876543210</div>
+      <div class="div1"data-aos="fade-left"data-aos-duration="1000">9876543210</div>
+
+    
+      <!-- <img class="vector-icon2" alt="" src="./static/images/public/vector2.svg" />
+
+      <img class="vector-icon3" alt="" src="./static/images/public/vector2.svg" /> -->
+
+      <div class="desktop-3-child11"> </div>
+      <div class="social-icons" data-aos="fade-up"
+      data-aos-duration="1000">
+        <a href="#">
+          <img src="./static/images/public/social-instagram.svg" alt="instagram" />
+        </a>
+        <a href="#">
+          <img src="./static/images/public/social-facebook.svg" alt="facebook" />
+        </a>
+        <a href="#">
+          <img src="./static/images/public/social-tweeter.svg" alt="tweeter" />
+        </a>
+      </div>
+     
+    </div>
+    <!-- final design ends  -->
+
+
+<script>
+  function hamMobile() {
+    var x = document.getElementById("myLinks");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
+  
+
+  
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init(
+   
+  );
+</script>
+
+{% endif %} {% endblock content %}

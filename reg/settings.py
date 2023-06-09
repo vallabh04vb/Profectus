@@ -31,7 +31,7 @@ EMAIL_PORT = EMAIL_PORT
 SECRET_KEY = 'django-insecure-c1x44@64*tplgy9g6un)yf+0pzbq6bd*3n6+(j_b&n1w%de_kb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*','54.197.6.215','localhost']
 
@@ -144,11 +144,11 @@ MEDIA_ROOT =os.path.join(BASE_DIR, 'resume')
 
 
 
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR, 'static'),
-]
+#STATICFILES_DIRS =[
+#    os.path.join(BASE_DIR, 'static'),
+#]
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MESSAGE_TAG={
     messages.ERROR:'danger'

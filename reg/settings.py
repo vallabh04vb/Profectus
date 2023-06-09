@@ -153,3 +153,5 @@ STATICFILES_DIRS =[
 MESSAGE_TAG={
     messages.ERROR:'danger'
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://profectus.abhyudayiitb.org']
